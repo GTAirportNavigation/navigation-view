@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
-import Mint from 'mint-ui'
+import select from '@/components/select'
+import ElementUI from 'element-ui'
 
 Vue.use(Router);
-Vue.use(Mint);
+Vue.use(ElementUI);
 
 export default new Router({
   routes: [
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: home
+    },
+    {
+      path: '/select',
+      name: 'select',
+      component: select
     }
   ]
 })

@@ -1,11 +1,19 @@
 <template>
   <div id="app">
-    <router-view/>
+    <el-container>
+      <el-header>{{header}}</el-header>
+      <router-view/>
+    </el-container>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data: function() {
+    return {
+      header: 'Airport Navigation System',
+    }
+  }
 }
 </script>
