@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <el-container>
-      <el-header>{{header}}</el-header>
-      <router-view/>
-    </el-container>
+    <mt-header fixed :title="header"></mt-header>
   </div>
 </template>
 
@@ -17,3 +14,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .mint-header {
+    background-color: #1e7e34;
+    height: 60px;
+  }
+</style>

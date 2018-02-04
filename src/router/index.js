@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
 import select from '@/components/select'
-import ElementUI from 'element-ui'
+import MintUI from 'mint-ui'
 
 Vue.use(Router);
-Vue.use(ElementUI);
+Vue.use(MintUI);
 
 export default new Router({
   routes: [
