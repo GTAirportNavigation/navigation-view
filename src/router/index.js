@@ -8,6 +8,7 @@ Vue.use(Router);
 Vue.use(MintUI);
 
 export default new Router({
+  mode:'history',
   routes: [
     {
       path: '/',
@@ -18,6 +19,7 @@ export default new Router({
       path: '/select',
       name: 'select',
       component: select
-    }
+    },
+
   ]
 })
