@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <mt-header fixed :title="header"></mt-header>
+      <mt-header :title="header"></mt-header>
+      <router-view></router-view>
   </div>
 </template>
 
