@@ -2,10 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
 import select from '@/components/select'
-import MintUI from 'mint-ui'
+import MainPage from '@/components/MainPage'
 
 Vue.use(Router);
-Vue.use(MintUI);
 
 export default new Router({
   mode:'history',
@@ -20,6 +19,10 @@ export default new Router({
       name: 'select',
       component: select
     },
-
+    {
+      path: '/main',
+      name: 'main-page',
+      component: MainPage
+    }
   ]
 })
