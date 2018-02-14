@@ -22,6 +22,4 @@ export default {
 </script>
 
 <style>
-  .mint-header {
-  }
 </style>

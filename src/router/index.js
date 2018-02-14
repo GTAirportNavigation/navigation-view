@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
-import select from '@/components/select'
+import select_page from '@/components/select'
 import MainPage from '@/components/MainPage'
 
 Vue.use(Router);
@@ -16,8 +16,8 @@ export default new Router({
     },
     {
       path: '/select',
-      name: 'select',
-      component: select
+      name: 'select_page',
+      component: select_page
     },
     {
       path: '/main',
