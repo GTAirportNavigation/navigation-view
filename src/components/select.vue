@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "select"
+        name: "select_page"
     }
 </script>
 
