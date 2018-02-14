@@ -2,21 +2,34 @@
   <div class = "content">
     <div class = "statusBar">
       <div class = "informationStatus">
+        <el-row>
+        <el-col :span = "10"><h6>{{flightStatus}}</h6></el-col>
 
-        <h5>{{flightStatus}}</h5>
-        <h5>Boarding time : {{boardingTime}} <el-tag type="success">On Time</el-tag></h5>
-        <h5>Estimated Time to gate ： {{estimatedTime}}</h5>
+        </el-row>
+        <el-row>
+
+        <h6>Boarding time : {{boardingTime}}</h6>
+        </el-row>
+        <el-row>
+
+        <h6>Estimated Time to gate : {{estimatedTime}}</h6>
+        </el-row>
+
+        <el-row>
+        <el-col :span = "7"><h5>Status: </h5></el-col>
+        <el-col :span = "17"><el-tag type="success">On Time</el-tag></el-col>
+        </el-row>
 
       </div>
       <div class = "forward">
       </div>
     </div>
     <div class = "directions">
-      <el-alert v-for="direction of directions" type = "success" v-if="direction.status == 'current'" show-icon>
+      <el-alert v-for="direction in directions" :key = "direction.info" type = "success" v-if="direction.status == 'current'">
            {{direction.info}}
       </el-alert>
 
-      <el-alert v-for="direction of directions" type = "info" v-if="direction.status == 'future'" show-icon>
+      <el-alert v-for="direction in directions" :key = "direction.info" type = "info" v-if="direction.status == 'future'">
         {{direction.info}}
       </el-alert>
     </div>
@@ -25,7 +38,9 @@
       <el-button type="success" size = "small">Resturant</el-button>
       <el-button type="success" size = "small">Explore</el-button>
       <el-row style = "margin-top:20px;margin-left:70px">
-        <el-button type="danger" size = "medium">Cancel</el-button>
+        <router-link to="/">
+         <el-button type="danger" size = "medium">Cancel</el-button>
+        </router-link>
       </el-row>
     </div>
   </div>
@@ -54,6 +69,9 @@
             }, {
                info:"Straight Up for 100 feet",
                status:"future"
+            }, {
+               info:"Turn right for 100 feet",
+               status:"future"
             }]
           }
         }
@@ -66,12 +84,12 @@
     width:100%;
   }
   .statusBar {
-    height:100px;
+    height:20%;
   }
   .informationStatus {
-    padding-top: 20px;
-    padding-left:10px;
-    width:70%;
+    padding-top: 5%;
+    padding-left:5%;
+    width:75%;
     height:100%;
     float:left;
   }
@@ -79,7 +97,7 @@
   .directions {
     width:95%;
     margin-left: 2%;
-    height:350px;
+    height:45%;
   }
   .forward{
     float:left;
@@ -87,13 +105,17 @@
     height:100%;
   }
   .buttonBar {
-    margin-left:10%;
+    margin-left:20%;
+
   }
   el-tag {
-    margin-left: 5px;
+    float:right;
   }
   .el-alert {
     margin-top: 15px;
+  }
+  .el-col-10 {
+    padding-top:2%;
   }
   h5 {
     margin:0px;
