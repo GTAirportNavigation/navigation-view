@@ -4,7 +4,7 @@
       <el-row style="padding: 2em">
         <el-col :span="23" id="input-col">
           <div class="sub-title">What is your flight number</div>
-          <el-input size="mini" placeholder="type here" v-model="data.flight_number" style="padding-top: 1em"></el-input>
+          <el-input size="mini" placeholder="type here" v-model="data.search_query" style="padding-top: 1em"></el-input>
         </el-col>
       </el-row>
       <el-row style="padding: 2em">
@@ -12,12 +12,12 @@
           <el-button id="search-button" v-on:click="search">Search</el-button>
         </el-col>
       </el-row>
-      <el-row v-if="data.show" id="flight-info" style="">
+      <el-row v-if="data.show" id="flight-info">
         <el-col :span="23">
           <div>Flight: {{data.flight_number}}</div>
           <div>
             <span>From {{data.source}} To {{data.destination}}</span>
-            <el-button id="status">{{data.status}}</el-button>
+            <el-button v-bind:class="data.style">{{data.status}}</el-button>
           </div>
           <div>Departure At: {{data.time}}</div>
         </el-col>
@@ -32,11 +32,13 @@
 
   var data = {
     show: false,
+    search_query: '',
     flight_number: '',
     source: '',
     destination: '',
     status: '',
-    time: ''
+    time: '',
+    style: '',
   };
 
   export default {
@@ -57,11 +59,24 @@
 
       search: function() {
         console.log('search');
+        data.flight_number = data.search_query;
+        var status = data.search_query;
+        var style = {
+          1: 'red',
+          2: 'yellow',
+          3: 'green',
+        };
+        var status_dict = {
+          1: 'Cancelled',
+          2: 'Delayed',
+          3: 'On Time',
+        }
         data.source = 'LAX';
         data.destination = 'ATL';
-        data.status = 'On Time';
+        data.status = status_dict[status];
         data.time = '5:45';
         data.show = true;
+        data.style = style[status];
       }
     }
   }
@@ -83,14 +98,28 @@
   }
 
   #flight-info {
-    background-color: #3a8ee6;
-    color: white;
+    background-color: white;
+    color: black;
     margin-top: 5em;
     padding-left: 1em;
   }
 
-  #status {
-    background: #5daf34;
+  .green {
+    background: green;
+    color: white;
+    border: none;
+    margin-left: 5em;
+  }
+
+  .red {
+    background: red;
+    color: #1b1e21;
+    border: none;
+    margin-left: 5em;
+  }
+
+  .yellow {
+    background: orange;
     color: #1b1e21;
     border: none;
     margin-left: 5em;
