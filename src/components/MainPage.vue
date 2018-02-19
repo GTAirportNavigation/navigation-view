@@ -25,12 +25,11 @@
       </div>
     </div>
     <div class = "directions">
-      <el-alert v-for="direction in directions" :key = "direction.info" type = "success" v-if="direction.status == 'current'">
-           {{direction.info}}
-      </el-alert>
 
-      <el-alert v-for="direction in directions" :key = "direction.info" type = "info" v-if="direction.status == 'future'">
-        {{direction.info}}
+
+
+      <el-alert v-for="instruction in instructions" :key = "instruction" type = "info">
+        {{instruction}}
       </el-alert>
     </div>
     <div class = "buttonBar">
@@ -48,8 +47,9 @@
 
 <script>
     import ElButton from "element-ui/packages/button/src/button";
-
+    import axios from 'axios';
     export default {
+
       components: {ElButton},
       name: "main-page",
         data () {
@@ -72,9 +72,69 @@
             }, {
                info:"Turn right for 100 feet",
                status:"future"
-            }]
+            }],
+            posts:[],
+
+            instructions:[],
           }
-        }
+        },
+      created() {
+        axios.get(`http://localhost:8081/listUsers`)
+          .then(response => {
+            // JSON responses are automatically parsed.
+            var temp =  response.data;
+
+
+            for (let i = 0; i < temp.length; i++) {
+                var instruction = "";
+
+                var location = temp[i][0];
+
+                var distance = temp[i][1];
+
+                var angle = temp[i][2];
+
+                var type = temp[i][3];
+
+                if (distance == 0) {
+                    instruction = "You have arrived " + location;
+                    this.instructions.push(instruction);
+                } else {
+                    var angle2 = temp[i + 1][2];
+
+                    var result = angle2 - angle;
+
+                    var subInstruction = "";
+
+                    if (location == '') {
+                        instruction = "Head straight for " + distance + " feet";
+                    } else {
+                      instruction = "Walk ahead in " + distance + " feet to " + location;
+                    }
+
+                    if (result < 180 && result > 0) {
+                      subInstruction = "Turn Right";
+                    }
+                    else if (result > -180 && result < 0) {
+                      subInstruction = "Turn Left";
+                    }
+                    else if (result == 0) {
+                      subInstruction = "Walk Straight";
+                    } else if (result == 180) {
+                      subInstruction = "Turn Around";
+                    }
+                    this.instructions.push(instruction);
+                    this.instructions.push(subInstruction);
+
+
+                }
+
+
+
+            }
+
+          })//leave for ajax call
+      }
     }
 </script>
 
