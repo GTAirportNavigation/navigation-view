@@ -12,7 +12,8 @@
           <el-button id="search-button" v-on:click="search">Search</el-button>
         </el-col>
       </el-row>
-      <el-row v-if="data.show" id="flight-info">
+      <router-link to="/main">
+      <el-row v-if="data.show" id="flight-info" >
         <el-col :span="23">
           <div>Flight: {{data.flight_number}}</div>
           <div>
@@ -22,6 +23,7 @@
           <div>Departure At: {{data.time}}</div>
         </el-col>
       </el-row>
+      </router-link>
     </el-main>
   </el-container>
 </template>
@@ -108,20 +110,20 @@
     background: green;
     color: white;
     border: none;
-    margin-left: 5em;
+    margin-left: 6em;
   }
 
   .red {
     background: red;
     color: #1b1e21;
     border: none;
-    margin-left: 5em;
+    margin-left: 6em;
   }
 
   .yellow {
     background: orange;
     color: #1b1e21;
     border: none;
-    margin-left: 5em;
+    margin-left: 6em;
   }
 </style>

@@ -79,7 +79,7 @@
           }
         },
       created() {
-        axios.get(`http://localhost:8081/listUsers`)
+        axios.get(`http://localhost:8000/nav/route/TG12/`)
           .then(response => {
             // JSON responses are automatically parsed.
             var temp =  response.data;
@@ -125,8 +125,6 @@
                     }
                     this.instructions.push(instruction);
                     this.instructions.push(subInstruction);
-
-
                 }
 
 
@@ -158,6 +156,9 @@
     width:95%;
     margin-left: 2%;
     height:45%;
+    overflow:scroll;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
   .forward{
     float:left;
