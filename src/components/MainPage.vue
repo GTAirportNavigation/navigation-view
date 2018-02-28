@@ -34,7 +34,9 @@
     </div>
     <div class = "buttonBar">
       <el-button type="success" size = "small">Map</el-button>
-      <el-button type="success" size = "small">Resturant</el-button>
+      <router-link to="/restaurants">
+        <el-button type="success" size = "small">Resturant</el-button>
+      </router-link>
       <el-button type="success" size = "small">Explore</el-button>
       <el-row style = "margin-top:20px;margin-left:70px">
         <router-link to="/">

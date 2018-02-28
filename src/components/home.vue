@@ -4,7 +4,7 @@
       <el-row style="padding: 2em">
         <el-col :span="23" id="input-col">
           <div class="sub-title">What is your flight number</div>
-          <el-input size="mini" placeholder="type here" v-model="data.search_query" style="padding-top: 1em"></el-input>
+          <el-input size="mini" placeholder="type here" v-model="search_query" style="padding-top: 1em"></el-input>
         </el-col>
       </el-row>
       <el-row style="padding: 2em">
@@ -13,14 +13,14 @@
         </el-col>
       </el-row>
       <router-link to="/main">
-      <el-row v-if="data.show" id="flight-info" >
+      <el-row v-if="show" id="flight-info" >
         <el-col :span="23">
-          <div>Flight: {{data.flight_number}}</div>
+          <div>Flight: {{flight_number}}</div>
           <div>
-            <span>From {{data.source}} To {{data.destination}}</span>
-            <el-button v-bind:class="data.style">{{data.status}}</el-button>
+            <span>From {{source}} To {{destination}}</span>
+            <el-button v-bind:class="style">{{status}}</el-button>
           </div>
-          <div>Departure At: {{data.time}}</div>
+          <div>Departure At: {{time}}</div>
         </el-col>
       </el-row>
       </router-link>
@@ -44,21 +44,11 @@
   };
 
   export default {
-    components: {
-      ElRow,
-      ElContainer
-    },
     name: 'home',
     data: function() {
-      return {
-        data
-      }
+      return data;
     },
     methods: {
-      select_page: function() {
-        this.$router.push('/select')
-      },
-
       search: function() {
         console.log('search');
         data.flight_number = data.search_query;
