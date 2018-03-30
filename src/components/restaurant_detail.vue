@@ -19,17 +19,18 @@
 </template>
 
 <script>
-    var data = {
-      score: 3.5,
-      location: 'Located near Gate 45'
-    };
 
-    export default {
-      name: "restaurant_detail",
-      data: function() {
-        return data;
-      }
+  var data = {
+    score: 3.5,
+    location: 'Located near Gate 45'
+  };
+
+  export default {
+    name: "restaurant_detail",
+    data: function() {
+      return data;
     }
+  }
 </script>
 
 <style scoped>

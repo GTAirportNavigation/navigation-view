@@ -4,17 +4,23 @@
       <el-row>
         <el-tabs v-model="activeName" @tab-click="tabClick">
           <el-tab-pane label="All Terminals" name="first">
-            <el-button v-if="showTerminal" class="terminal-button" type="primary" v-for="terminal in terminals" v-on:click="selectTerminal(terminal)">
-              {{terminal}}
-              <i class="el-icon-arrow-right el-icon-right"></i>
-            </el-button>
-            <el-button v-else="showTerminal" class="restaurants-button" type="primary" v-for="restaurant in restaurants">
-              {{restaurant}}
-              <i class="el-icon-arrow-right el-icon-right"></i>
-            </el-button>
+            <el-col v-if="showTerminal">
+              <el-button class="terminal-button" type="primary" v-for="terminal in terminals" v-on:click="selectTerminal(terminal)">
+                {{terminal}}
+                <i class="el-icon-arrow-right el-icon-right"></i>
+              </el-button>
+            </el-col>
+            <el-col v-else="showTerminal">
+              <el-button class="restaurants-button" type="primary" v-for="restaurant in restaurants">
+                {{restaurant}}
+                <i class="el-icon-arrow-right el-icon-right"></i>
+              </el-button>
+            </el-col>
           </el-tab-pane>
           <el-tab-pane label="This Terminal" name="second">
-            <el-button class="restaurants-button" type="primary" v-for="restaurant in restaurants">{{restaurant}}<i class="el-icon-arrow-right el-icon-right"></i></el-button>
+              <el-button class="restaurants-button" type="primary" v-for="restaurant in restaurants">
+                <router-link :to="{ name: 'restaurant-detail', params: { name: restaurant }}" class="dropdown-item">{{restaurant}}</router-link>
+                <i class="el-icon-arrow-right el-icon-right"></i></el-button>
           </el-tab-pane>
         </el-tabs>
       </el-row>
@@ -66,7 +72,7 @@
         rest.forEach(function(ele) {
           data.restaurants.push(ele);
         });
-      }
+      },
     }
   }
 </script>

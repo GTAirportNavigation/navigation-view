@@ -32,8 +32,8 @@ export default new Router({
       component: restaurants
     },
     {
-      path: '/restaurant-detail',
-      name: 'restaurants-detail',
+      path: '/restaurant-detail/:name',
+      name: 'restaurant-detail',
       component: restaurant_detail
     }
   ]
