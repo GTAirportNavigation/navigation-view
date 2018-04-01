@@ -12,14 +12,14 @@
             </el-col>
             <el-col v-else="showTerminal">
               <el-button class="restaurants-button" type="primary" v-for="restaurant in restaurants">
-                {{restaurant}}
+                <router-link :to="{ name: 'restaurant-detail', params: { name: restaurant }}">{{restaurant}}</router-link>
                 <i class="el-icon-arrow-right el-icon-right"></i>
               </el-button>
             </el-col>
           </el-tab-pane>
           <el-tab-pane label="This Terminal" name="second">
               <el-button class="restaurants-button" type="primary" v-for="restaurant in restaurants">
-                <router-link :to="{ name: 'restaurant-detail', params: { name: restaurant }}" class="dropdown-item">{{restaurant}}</router-link>
+                <router-link :to="{ name: 'restaurant-detail', params: { name: restaurant }}">{{restaurant}}</router-link>
                 <i class="el-icon-arrow-right el-icon-right"></i></el-button>
           </el-tab-pane>
         </el-tabs>

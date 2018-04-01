@@ -5,13 +5,18 @@
         <img :src="require('./../assets/fiveguys.jpg')" width="80%"/>
       </el-row>
       <el-row>
+        Restuarant: {{$route.params.name}}
+      </el-row>
+      <el-row>
         Yelp Rating: {{score}} / 5
       </el-row>
       <el-row>
         Located: {{location}}
       </el-row>
       <el-row style="text-align: center">
-        <el-col :span="11"><el-button class="cancel-button">Cancel</el-button></el-col>
+        <router-link to="/restaurants">
+          <el-col :span="11"><el-button class="cancel-button">Cancel</el-button></el-col>
+        </router-link>
         <el-col :span="13"><el-button class="start-button">Start</el-button></el-col>
       </el-row>
     </el-main>
