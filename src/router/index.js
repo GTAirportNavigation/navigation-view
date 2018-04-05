@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/home'
 import select_page from '@/components/select'
+import parkingLot from '@/components/parkingLot'
 import MainPage from '@/components/MainPage'
 import restaurants from '@/components/restaurants'
 import restaurant_detail from '@/components/restaurant_detail'
@@ -20,6 +21,11 @@ export default new Router({
       path: '/select',
       name: 'select_page',
       component: select_page
+    },
+    {
+      path: '/parking_lot',
+      name: 'parking_lot',
+      component: parkingLot
     },
     {
       path: '/main',
