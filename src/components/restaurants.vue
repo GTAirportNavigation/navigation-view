@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-main style="padding: 0; text-align: center;">
+    <el-main style="padding: 0; text-align: center; margin-top: 10%">
       <el-row>
         <el-tabs v-model="activeName" @tab-click="tabClick">
           <el-tab-pane label="All Terminals" name="first">
