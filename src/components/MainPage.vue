@@ -142,6 +142,7 @@
   .content {
     height:100%;
     width:100%;
+    margin-top: 10%;
   }
   .statusBar {
     height:20%;

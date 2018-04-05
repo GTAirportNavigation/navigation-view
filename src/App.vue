@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <mt-header title="Airport Navigation System">
-      <router-link to="/" slot="left">
-        <mt-button icon="back"></mt-button>
-      </router-link>
-      <mt-button icon="more" slot="right"></mt-button>
+    <mt-header fixed title="Airport Navigation System">
     </mt-header>
     <router-view></router-view>
   </div>
@@ -23,11 +19,17 @@ export default {
 
 <style>
   .mint-header {
+    background-color: #23cece;
+  }
+  .mint-header-title {
+    padding-bottom: 0;
+    margin: 0;
   }
   #app {
       height:100%;
       width:100%;
       margin:0;
       padding:0;
+      overflow: hidden;
   }
 </style>

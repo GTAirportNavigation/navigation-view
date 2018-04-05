@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import home from '@/components/home'
 import select_page from '@/components/select'
 import parkingLot from '@/components/parkingLot'
+import rideshare from '@/components/RideShare'
+import rental from '@/components/rental'
 import MainPage from '@/components/MainPage'
 import restaurants from '@/components/restaurants'
 import restaurant_detail from '@/components/restaurant_detail'
@@ -26,6 +28,16 @@ export default new Router({
       path: '/parking_lot',
       name: 'parking_lot',
       component: parkingLot
+    },
+    {
+      path: '/ride_share',
+      name: 'ride_share',
+      component: rideshare
+    },
+    {
+      path: '/rental',
+      name: 'rental',
+      component: rental
     },
     {
       path: '/main',

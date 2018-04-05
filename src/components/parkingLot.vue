@@ -54,17 +54,23 @@
                 <h5>North Parking Lot</h5>
               </el-row>
               <el-row>
-                <h7>80/200</h7>
+                <h7>0/200</h7>
               </el-row>
 
             </el-col>
             <el-col :span="12">
-              <h7>0.2 miles from your gate</h7>
+              <h7>Unavilable</h7>
             </el-col>
           </el-row>
 
         </el-card>
       </el-col>
+    </el-row>
+
+    <el-row style = "margin-top:10%;margin-left:40%">
+      <router-link to="/select">
+        <el-button type="danger" size = "large">Back</el-button>
+      </router-link>
     </el-row>
   </div>
 
@@ -92,6 +98,9 @@
   .parkingInfoWrong {
     margin-left: 5%;
     margin-top: 10%;
+    background-color: gray;
+    border-color: gray;
+    box-shadow: none;
   }
   h5 {
     font-size: medium;

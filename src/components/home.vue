@@ -12,7 +12,7 @@
           <el-button id="search-button" v-on:click="search">Search</el-button>
         </el-col>
       </el-row>
-      <router-link to="/main">
+      <router-link to="/select">
       <el-row v-if="show" id="flight-info" >
         <el-col :span="23">
           <div>Flight: {{flight_number}}</div>

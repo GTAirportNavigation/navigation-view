@@ -2,30 +2,22 @@
 <div class = "content">
 <h6 style ="padding-left:1em;
 padding-top:0.5em"> Select your transportation mode</h6>
-<el-row  :gutter="20" style ="margin-left:0.5em;
-margin-top:2em">
-    <el-col :span="11">
-    <div class="block">
-      <h4>Rental</h4>
-    </div>
-    </el-col>
-    <el-col :span="11"><div class="block">
-    <h4>Marta</h4>
-    </div></el-col>
-</el-row>
+  <div class = "container">
+    <router-link to ="/ride_share">
+    <mt-cell title="Rideshare and Marta" is-link></mt-cell>
+    </router-link>
+    <router-link to ="/parking_lot">
+      <mt-cell title="Parking Lot" is-link></mt-cell>
+    </router-link>
+    <router-link to ="/rental">
+    <mt-cell title = "Rental" is-link></mt-cell>
+    </router-link>
 
-<el-row  :gutter="20" style ="margin-left:0.5em;
-margin-top:2em">
-    <el-col :span="11"><div class="block">
-    <h4>Uber</h4></div></el-col>
-    <el-col :span="11"><div class="block">
-    <h4>Driving</h4></div></el-col>
-</el-row>
-
+  </div>
 <router-link to="/main">
  <el-button type="danger" size = "large"
- style = "margin-top:3em;
- margin-left:6.5em">I am at the the airport</el-button>
+ style = "margin-top:5em;
+ margin-left:8em">I am at the the airport</el-button>
 </router-link>
 
 </div>
@@ -39,6 +31,16 @@ margin-top:2em">
 </script>
 
 <style scoped>
+  .content {
+    height:100%;
+    width:100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 10%;
+  }
+  .container {
+    margin-top: 2em;
+  }
 .block {
     color:white;
     background-color:#04b9e6;
@@ -49,4 +51,7 @@ margin-top:2em">
     padding-left:1.75em;
     font-size:1.5em;
 }
+  .container {
+
+  }
 </style>
