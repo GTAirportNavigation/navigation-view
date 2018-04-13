@@ -1,6 +1,9 @@
 # navigation_view
+The navigation view uses Vue.js framework for frontend rendering. It sets up all frontend layout and handle the data
+flow from backend.
 
-> A Vue.js project
+## Dependency
+npm >= 5.6.0
 
 ## Build Setup
 
