@@ -16,6 +16,8 @@
       <el-row v-if="show" id="flight-info" >
         <el-col :span="23">
           <div>Flight: {{flight_number}}</div>
+          <div>Terminal: {{terminal}}</div>
+          <div>Gate: {{gate}}</div>
           <div>
             <span>From {{source}} To {{destination}}</span>
             <el-button v-bind:class="style">{{status}}</el-button>
@@ -29,8 +31,7 @@
 </template>
 
 <script>
-  import ElContainer from "element-ui/packages/container/src/main";
-  import ElRow from "element-ui/packages/row/src/row";
+  import axios from 'axios';
 
   var data = {
     show: false,
@@ -41,6 +42,8 @@
     status: '',
     time: '',
     style: '',
+    terminal: '',
+    gate: ''
   };
 
   export default {
@@ -50,25 +53,57 @@
     },
     methods: {
       search: function() {
-        console.log('search');
         data.flight_number = data.search_query;
-        var status = data.search_query;
-        var style = {
-          1: 'red',
-          2: 'yellow',
-          3: 'green',
-        };
-        var status_dict = {
-          1: 'Cancelled',
-          2: 'Delayed',
-          3: 'On Time',
-        };
-        data.source = 'LAX';
-        data.destination = 'ATL';
-        data.status = status_dict[status];
-        data.time = '5:45';
-        data.show = true;
-        data.style = style[status];
+        axios.get('http://localhost:8000/flight/' + data.flight_number)
+          .then(response => {
+            var result = response.data;
+
+            data.terminal = function() {
+              var terminal = '';
+              for (var i = 0; i < result.length; i++) {
+                if (result[i] === "[" || result[i] === "'") {
+                  continue;
+                }
+                if (result[i] === "G") {
+                  break;
+                }
+                terminal += result[i];
+              }
+              return terminal;
+            }();
+
+            data.gate = function() {
+              var gate = '';
+              var start = false;
+              for (var i = 0; i < result.length; i++) {
+                if (result[i] === "]" || result[i] === "'")
+                  continue;
+                if (result[i] === "G")
+                  start = true;
+                if (start)
+                  gate += result[i];
+              }
+              return gate;
+            }();
+
+            var status = 1;
+            var style = {
+              1: 'red',
+              2: 'yellow',
+              3: 'green',
+            };
+            var status_dict = {
+              1: 'Cancelled',
+              2: 'Delayed',
+              3: 'On Time',
+            };
+            data.source = 'LAX';
+            data.destination = 'ATL';
+            data.status = status_dict[status];
+            data.time = '5:45';
+            data.show = true;
+            data.style = style[status];
+          });
       }
     }
   }
