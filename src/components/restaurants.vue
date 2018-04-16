@@ -25,7 +25,7 @@
         </el-tabs>
       </el-row>
       <el-row style="margin-top: 2em">
-        <router-link to="/">
+        <router-link to="/main">
           <el-button type="danger" size = "medium">Cancel</el-button>
         </router-link>
       </el-row>

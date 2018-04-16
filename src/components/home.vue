@@ -62,7 +62,7 @@
           1: 'Cancelled',
           2: 'Delayed',
           3: 'On Time',
-        }
+        };
         data.source = 'LAX';
         data.destination = 'ATL';
         data.status = status_dict[status];
