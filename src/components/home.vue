@@ -56,37 +56,18 @@
         data.flight_number = data.search_query;
         axios.get('http://localhost:8000/flight/' + data.flight_number)
           .then(response => {
-            var result = response.data;
-
-            data.terminal = function() {
-              var terminal = '';
-              for (var i = 0; i < result.length; i++) {
-                if (result[i] === "[" || result[i] === "'") {
-                  continue;
-                }
-                if (result[i] === "G") {
-                  break;
-                }
-                terminal += result[i];
-              }
-              return terminal;
-            }();
+            var flight_info = response.data;
+            data.terminal = flight_info[0][0];
 
             data.gate = function() {
               var gate = '';
-              var start = false;
-              for (var i = 0; i < result.length; i++) {
-                if (result[i] === "]" || result[i] === "'")
-                  continue;
-                if (result[i] === "G")
-                  start = true;
-                if (start)
-                  gate += result[i];
+              for (var i = 1; i < flight_info[0].length; i++) {
+                gate += flight_info[0][i];
               }
               return gate;
             }();
 
-            var status = 1;
+            var status = (flight_info[1] === 1) ? 3 : 2;
             var style = {
               1: 'red',
               2: 'yellow',

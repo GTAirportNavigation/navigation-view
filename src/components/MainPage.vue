@@ -81,7 +81,7 @@
           }
         },
       created() {
-        axios.get('http://localhost:8000/route/TG12/')
+        axios.get('http://localhost:8000/route/Tj12/tg11')
           .then(response => {
             // JSON responses are automatically parsed.
             var temp =  response.data;
